@@ -1,3 +1,8 @@
+// Aaron Li
+// SoftDev2 pd8
+// K00 -- I See a Red Door
+// 2019-01-30
+
 var c = document.getElementById("slate");
 var clear = document.getElementById("clear");
 var tog = document.getElementById("toggle");
@@ -24,8 +29,6 @@ clear.addEventListener("click", function(e) {
 	ctx.clearRect(0, 0, c.height, c.width);
 });
 
-// only draw if mouse within the canvas
-c.addEventListener("click", draw);
 // drawing whatever mode is on
 var draw = function(e) {
 	console.log("xcor: " + e.offsetX);
@@ -49,6 +52,9 @@ var draw = function(e) {
 		ctx.stroke();
 	}
 };
+
+// only draw if mouse within the canvas
+c.addEventListener("click", draw);
 
 console.log(c);
 console.log(ctx);
