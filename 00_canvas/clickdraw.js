@@ -26,7 +26,7 @@ tog.addEventListener("click", function(e) {
 
 // clearing canvas
 clear.addEventListener("click", function(e) {
-	ctx.clearRect(0, 0, c.height, c.width);
+	ctx.clearRect(0, 0, c.width, c.height);
 });
 
 // drawing whatever mode is on

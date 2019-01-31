@@ -1,4 +1,11 @@
 #SOFTDEV NOTES
+
+-----
+
+## 01/31/19
+
+**Aim**: Mess around on the canvas
+
 -----
 
 ## 01/30/19
