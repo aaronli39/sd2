@@ -6,6 +6,10 @@
 
 **Aim**: Mess around on the canvas
 
+**unix philosophy?**:
+* have minimalistic small chunks of code
+* when designing a tool, it does one job and does it well, and nothing else
+
 -----
 
 ## 01/30/19
