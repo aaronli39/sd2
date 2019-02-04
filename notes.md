@@ -2,6 +2,32 @@
 
 -----
 
+## 02/04/19
+
+**Aim**: Repaint, repaint, repaint, repaint ...
+
+**DN**:
+* animation is rendering images quickly and is used to imitate/create the illusion of movement when in reality its just successive playing of imagery
+
+**commands**:
+* **don't** use: ```setTimeout()``` or ```setInterval()``` because:
+	* you dont get the delay you asked for
+	* induce browser spasticity(force reflow before fully loaded)
+* use ```window.requestAnimationFrame()```:
+	* executes on *next available* screen repaint (ensures hardware/browsers are ready)
+	* pauses for background tabs, hidden frames, etc.
+	* is automatically passed a timestamp to mark call time
+	* returns a **non-zero** integer(can be used as ID)
+	* 60fps target
+	* can be optimized bt browser (smoother animations)
+	* more resource efficient(battery-friendly)
+	* syntax: ```requestAnimationFrame(*callback*)```
+* use ```window.cancelAnimationFrame()```:
+	* stops animation
+	* syntax: ```cancelAnimationFrame(id)```
+
+-----
+
 ## 02/01/19
 
 **Aim**: Connections
