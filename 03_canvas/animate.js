@@ -1,8 +1,8 @@
-// Canvasseurs
-// Aaron Li, Aleksandra Koroza
+// happy cows
+// Aaron Li, Joyce Liao
 // SoftDev2 pd8
-// K02 -- Connecting the dots
-// 2019-02-02
+// K03 -- They lock us in the tower whenever we get caught
+// 2019-02-04
 
 // variables
 var canvas = document.getElementById("playground");
