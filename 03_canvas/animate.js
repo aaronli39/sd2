@@ -8,7 +8,7 @@
 var canvas = document.getElementById("playground");
 var radius = 0;
 var requestID = 0;
-var max = canvas.width - 10;
+var max = (canvas.width - 10) / 2;
 var grow; // growing or stopped
 var growing;
 
@@ -26,17 +26,37 @@ var halt = function(e) {
 };
 
 var draw = function(e) {
-	if (grow == null) grow = true;
+	if (grow == null) {
+		grow = true;
+		growing = true;
+	}
+
+	if (! grow) {
+		grow = true;
+	}
+
 	console.log(grow);
 	if (grow) {
 		requestID = window.requestAnimationFrame(draw);
 		ctx.beginPath();
 		ctx.fillStyle = "#00FFFF";
+		console.log(radius);
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.arc(canvas.width / 2, canvas.height / 2, radius, Math.PI, Math.PI * 3);
 		ctx.fill();
-		radius += 1;
+		if (growing) radius += 1;
+		else {
+			radius -= 1;
+		}
 
-		if (radius == max)
+		console.log(growing);
+		if (radius >= max) {
+			growing = false;
+		}
+
+		if (radius == 0) {
+			growing = true;
+		}
 	}
 };
 
