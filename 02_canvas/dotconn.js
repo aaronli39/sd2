@@ -22,7 +22,7 @@ var ctx = c.getContext("2d");
 // and all the way to the height/width of the canvas
 clear.addEventListener("click", function(e) {
 	ctx.clearRect(0, 0, c.width, c.height);
-	first = True;
+	first = true;
 });
 
 // drawing a dot and connect lines
