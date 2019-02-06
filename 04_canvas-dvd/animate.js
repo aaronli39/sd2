@@ -1,8 +1,8 @@
 // happy cows
 // Aaron Li, Joyce Liao
 // SoftDev2 pd8
-// K03 -- They lock us in the tower whenever we get caught
-// 2019-02-04
+// K04 -- canvas-based, JS-driven animation -- now with external img
+// 2019-02-06
 
 // variables
 var canvas = document.getElementById("playground"); // canvas element
@@ -58,41 +58,52 @@ var draw = function(e) {
 	}
 };
 
+// dvd animation
 var dvder = function(e) {
+	// cancel previous frame to prevent speeding
 	window.cancelAnimationFrame(requestID);
-
+	// img dimensions
 	var rectW = 100;
 	var rectH = 50;
-
+	// randomize starting location
+	// stores the current x/y coordinate of image
 	var rectX = Math.floor(Math.random() * (canvas.width - rectW));
 	var rectY = Math.floor(Math.random() * (canvas.width - rectH));
-
+	// vector components of movement
 	var xVel = 1;
 	var yVel = 1;
 
+	// create the new image obj and set source
 	var logo = new Image();
 	logo.src = "logo_dvd.jpg";
 
+	// use an internal function so you can callback without
+	// resetting all variables above ^
 	var dvdLogo = function() {
+		// clear the canvas first
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		// set request id
 		requestID = window.requestAnimationFrame(dvdLogo);
-		// console.log(logo.src);
+
 		console.log("xvel: " + xVel);
 		console.log("yvel: " + yVel);
 		console.log(rectX);
 		console.log(rectY);
+
+		// draw the image
 		ctx.drawImage(logo, rectX, rectY, rectW, rectH);
 
-		if (rectX >= canvas.width - 10) {
+		if (rectX >= canvas.width - rectW) { // bounces off right
 			xVel = -1;
-		} else if (rectY <= 0) {
+		} else if (rectY <= 0) { // bounces top
 			yVel = 1;
-		} else if (rectY >= canvas.height - 10) {
+		} else if (rectY >= canvas.height - rectH) { // bounces buttom
 			yVel = -1;
-		} else if (rectX <= 0) {
+		} else if (rectX <= 0) { // bounces left
 			xVel = 1;
 		}
 
+		// increment/decrement to the new position
 		rectX += xVel;
 		rectY += yVel;
 	};
@@ -101,13 +112,6 @@ var dvder = function(e) {
 
 
 };
-
-// var dvder = function(e) {
-// 	dvdSetup();
-//
-// 	window.requestAnimationFrame(dvder);
-// 	ctx.drawImage()
-// };
 
 // button event listeners
 stop.addEventListener("click", halt);
