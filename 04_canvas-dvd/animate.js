@@ -76,19 +76,19 @@ var dvder = function(e) {
 	var dvdLogo = function() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		requestID = window.requestAnimationFrame(dvdLogo);
-		console.log(logo.src);
-		ctx.drawImage(logo, rectX, rectY, rectW, rectH);
-
+		// console.log(logo.src);
 		console.log("xvel: " + xVel);
 		console.log("yvel: " + yVel);
 		console.log(rectX);
 		console.log(rectY);
-		if (rectX >= canvas.width) {
+		ctx.drawImage(logo, rectX, rectY, rectW, rectH);
+
+		if (rectX >= canvas.width - 10) {
 			xVel = -1;
 		} else if (rectY <= 0) {
-			yVel = -1;
-		} else if (rectY >= canvas.height) {
 			yVel = 1;
+		} else if (rectY >= canvas.height - 10) {
+			yVel = -1;
 		} else if (rectX <= 0) {
 			xVel = 1;
 		}
