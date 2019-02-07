@@ -85,14 +85,11 @@ var dvder = function(e) {
 		// set request id
 		requestID = window.requestAnimationFrame(dvdLogo);
 
-		console.log("xvel: " + xVel);
-		console.log("yvel: " + yVel);
 		console.log(rectX);
 		console.log(rectY);
 
 		// draw the image
 		ctx.drawImage(logo, rectX, rectY, rectW, rectH);
-
 		if (rectX >= canvas.width - rectW) { // bounces off right
 			xVel = -1;
 		} else if (rectY <= 0) { // bounces top
@@ -106,11 +103,7 @@ var dvder = function(e) {
 		// increment/decrement to the new position
 		rectX += xVel;
 		rectY += yVel;
-	};
-
-	dvdLogo();
-
-
+	}; dvdLogo();
 };
 
 // button event listeners
