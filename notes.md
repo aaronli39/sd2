@@ -2,6 +2,47 @@
 
 -----
 
+## 02/12/19
+
+**Aim**: Cold LAMPin' with Flav
+
+* our web apps have been using Flask's built in web server
+* recall: 
+    * web server (in the software sense) is simply a process listening for HTTP requests and responding to them
+    * Flask is a *microframework*
+
+**flask's web server**
+* great for dev/debugging b/c simple, fast, ez turn on/off
+* **suboptimal** for full time site serving
+* server is **single-threaded**:
+    * each request(html/css/js/imgs/etc) handled sequentially. Visitors must wait for any prior requests before theirs get processed
+    * not desgined to protect your app or host(serving mahine) from malicious attacks
+    * not intended to be long-term, persistent, high-volume server (could fail for various reasons)
+
+**production web servers**
+* designed to handle high quantity of requests
+* commonly use separate processes/threaded for each request (these often called workers)
+* can serve multiple sites/apps from same host (eg: talos.stuy.edu, cyber.stuy.edu, someothersite.com)
+* eg: apache, nginx, green unicorn
+* more robust than Flask, less than apache/nginx
+* requires minimal config
+
+**why apache2?**
+* longstanding
+* familiar
+  
+**LAMP**:
+* **L**inux
+* **A**pache
+* **M**ySql
+* **P**hp
+* alternatives: LEMP, MEEN, MEAN
+
+* DO gide on LAMP: goo.gl/C7Ho5J
+* goo.gl/vvnw7M
+
+-----
+
 ## 02/04/19
 
 **Aim**: Repaint, repaint, repaint, repaint ...
