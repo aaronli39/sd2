@@ -2,6 +2,59 @@
 
 -----
 
+## 02/14/19
+
+**reading flask and apache2 errors**
+* `sudo cat /var/log/apache2/error.log`
+* all requests, updated real time: `sudo tail /var/log/apache2/access.log -f`
+
+-----
+
+## 02/13/19
+
+**apache2**
+* each unique site is a virtual host
+* all processes run as:
+    * user **www-data**
+    * group **www-data**
+* config files live in **/etc/apache2**
+* websites live in **/var/www**
+
+**apache2 + flask**
+* goal: apache2 as web server, but flask as backend
+
+* enter WSGI(web server gateway interface)
+* convention/set of common fxn names
+* allows conventional web server to fwd requests to a microframework like flask
+* http://flask.pocoo.org/docs/1.0/deploying/mod_wsgi/
+
+1) rename flask app to `__init__.py`
+2) entire flask app in a single dir, named after your app
+3) put this dir in another of same name
+4) in outer dir, create file `<appname>.wsgi` (`<appname>.conf` is required too)
+
+**server setup on 18.04**
+1) install apache2
+2) sudo apt install apache2
+3) install and enable WSGI
+
+```python
+sudo apt install libapache2-mod-wsgi
+sudo a2enmod wsgi # enable module
+sudo service apache2 restart # restarts server
+
+# write WSGI file
+
+#!/usr/bin/python
+import sys
+sys.path.insert(0, "/var/www/<appname>/)
+from <appname> import app as application
+# change app to match name of Flask object in __init__.py
+```
+goo.gl/hJVt5J
+
+-----
+
 ## 02/12/19
 
 **Aim**: Cold LAMPin' with Flav
