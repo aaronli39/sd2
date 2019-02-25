@@ -2,6 +2,63 @@
 
 -----
 
+## 02/25/19
+
+**Aim**: Hu**mongo**us learnination
+
+**relational dbs**:
+* libraries
+* you are not in default in the yellow pages
+* hospital 
+* school
+* prison
+* dmv
+* airlines
+* user profile - bad for relational db
+
+**drawbacks of relational db**
+* fixed schedma
+    * must be known ahead of time
+    * problematic to change after up and running
+* lists are problematic
+* redundant data(in a bad way)(storing excess data that has no true purpose)
+* must live on a single host
+
+**noSQL (doument-oriented DB)**
+* non table based relational db
+* growing b/c of web apps, big data
+* **key-value dictionaries:** db is essentially a huge dictionary
+* **graph:** db stored as graph w relationships btwn nodes
+* **document:** db collection of documents each containing unfixed data(amount, type)
+* sites like FB and Twitter would not possible without graph data
+* SQL <-> DocDB:
+    * record <-> doc
+    * table <-> collection
+
+**documented-oriented db**
+* each record stored as a doc(instead of row in table)
+* each doc contains:
+    * all data associated with given record, as key-value pairs("fields" with "values")
+* fields need no type specification
+* a field mayb contain different types of data
+* docs may be grouped together in a collection
+* docus in a collection need NOT have same complement of fields
+* each dot gets primary key, usually assigned by DB manager
+* docs need not be stored on same storage device
+* you can dynamically update/add data without having to take it down
+
+**making MongoDB work for you**
+* employs separate server/daemon(as opposed to storing entire DB as a single file)
+* facilitate distribution of DB over many hosts if required
+
+**commands**
+* `db.<collection>.insert(<doc>)`
+    * adds doc to collection
+    * if collection doesnt exist, create
+    * 
+
+-----
+
 ## 02/14/19
 
 **reading flask and apache2 errors**
