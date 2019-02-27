@@ -2,6 +2,28 @@
 
 -----
 
+## 02/27/19
+
+**matthew ming - ocaml**
+* objective caml, made to be highly readable, excels at recursion
+* considered to be one of the fastest high-level languages
+
+**mongo**
+* the `<($lt), >($gt), <=($lte), >=(gte), !=(ne)` operators
+    * eq: `{"id": {$lt: 400}`
+```py
+{$or [{"name":"boa"},
+    {"id":{$lt:400}}
+    ]
+}
+
+$ mongoimport -- db <dbname> -- collection <collection_name> --file <path to json import file>
+
+$ mongod -v --bind_ip_all --noauth --dbpath <path>
+```
+
+-----
+
 ## 02/25/19
 
 **Aim**: Hu**mongo**us learnination
@@ -55,7 +77,6 @@
 * `db.<collection>.insert(<doc>)`
     * adds doc to collection
     * if collection doesnt exist, create
-    * 
 
 -----
 
