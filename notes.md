@@ -2,6 +2,29 @@
 
 -----
 
+## 02/28/19
+
+* you needed to create a /data/db/ directory before you can use `mongod -v --bind_ip_all --noauth --dbpath <path>`
+
+**using pymongo**
+* pip install pymongo
+* then:
+```py
+
+import pymongo
+
+SERVER_ADDR = "149.89.150.100"
+connection = pymongo.MongoClient(SERVER_ADDR)
+db = connection.test
+collection = db.restaurants
+
+```
+
+* checkout [here](api.mongodb.com/python/current/tutorial.html)
+* 
+
+-----
+
 ## 02/27/19
 
 **matthew ming - ocaml**
@@ -17,7 +40,7 @@
     ]
 }
 
-$ mongoimport -- db <dbname> -- collection <collection_name> --file <path to json import file>
+$ mongoimport --db <dbname> --collection <collection_name> --file <path to json import file>
 
 $ mongod -v --bind_ip_all --noauth --dbpath <path>
 ```
