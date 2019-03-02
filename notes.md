@@ -2,6 +2,12 @@
 
 -----
 
+## 02/29/19
+
+
+
+-----
+
 ## 02/28/19
 
 * you needed to create a /data/db/ directory before you can use `mongod -v --bind_ip_all --noauth --dbpath <path>`
