@@ -6,9 +6,18 @@
 # 2019-02-29
 
 '''
-We used the English history dataset (found here https://github.com/jdorfman/awesome-json-datasets). The
-set is a collection of historical events. Each entry has an associated date, description, location, and associated literature.
+We used the English history dataset (found here http://www.vizgr.org/historical-events/search.php?format=json&begin_date=-3000000&end_date=20151231&lang=en). 
+The set is a collection of historical events. Each entry has an associated date, description, location, and associated literature.
 The collection was imported using the mongoimport command on our droplets.
+'''
+
+'''
+IMPORT INSTRUCTIONS:
+
+http://www.vizgr.org/historical-events/search.php?format=json&begin_date=-3000000&end_date=20151231&lang=en
+
+1) Click and download the link above to download the dataset, name it whatever you want with a .json file type.
+2) run $ python3 findrep.py <name_of_ur_file>.json to convert the file into a valid json format
 '''
 
 import pymongo
@@ -81,9 +90,7 @@ def find(phrase):
         print("Please input another phrase to search! \n")
 
 # test
-
-
-# yearAll(100)
-# yearDesc(100)
-# placeDesc("Americas")
+yearAll(100)
+yearDesc(100)
+placeDesc("Americas")
 find("valid")
