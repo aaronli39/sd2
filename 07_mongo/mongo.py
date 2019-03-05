@@ -17,74 +17,73 @@ SERVER_ADDR = "69.55.59.139"
 # SERVER_ADDR = "178.128.156.17"
 connection = pymongo.MongoClient(SERVER_ADDR)
 db = connection.aaronoza
-col = db.history
+col = db.hw
 
-# Given a year, return relevant historical entries
-def yearDesc(year):
-    if type(year) == type(123):
-        cursor = col.find({"result.event.date": str(year)})
-        for entry in cursor:
-            print(entry)
-
-    else:
-        print("Please input a valid year!\n")
+# Given a year, return historical entries found given input:
+# an integer year (eg: 900)
+# a string date in yyyy/mm/dd format (eg: 2001/01/17)
+def yearAll(year):
+    cursor = col.find(
+        {
+            "event.date": str(year)
+        }
+    )
+    if cursor.count() == 0:
+        print("Sorry, this year wasn't found.\n")
+        return
+    [print(i, "\n") for i in cursor]
 
 # Given a specific date, return relevant historical entry
-def dateDesc(date):
-    if type(date) == type("abc"):
-        cursor = col.find({"result.event.date": str(year)})
-        for entry in cursor:
-            print(entry)
+def yearDesc(date):
+    if type(date) != type(12) or type(date) != type(""):
+        print("Please enter a valid date.\n")
+        return
 
-    else:
-        print("Please input a date with the format mm/dd/year \n")
+    cursor = col.find(
+        {
+            "event.date": str(date)
+        }
+    )
+    if cursor.count() == 0:
+        print("Sorry, this year wasn't found.")
+        return
+    print("\n----- Descriptions found for date:", date, "-----\n")
+    [print(i["event"]["description"], "\n") for i in cursor]
+    print("----- End of Descriptions found for date:", date, "-----\n")
 
-# Given a place (category 2) returns relevant historical entries
+# Given a place or topic (category 2) returns relevant historical entry descriptions
+# first letter of place should be capitalized
+# (eg: Americas, Asia, Religion, Arts and Sciences)
 def placeDesc(place):
     if type(place) == type("abc"):
-        cursor = col.find({"result.event.category2": place})
-        for entry in cursor:
-            print(entry)
-
-    else:
-        print("Please input a valid place! \n")
-
-# Return all entries in a given year and place
-def yearPlaceDesc(year,place):
-    if type(year) == type(123) and type(place)== type("abc"):
-        cursor = col.find({
-        "$and":[
-        {"result.event.date":str(year)},
-        {"result.event.category2":place},
-        ]
-        })
-        for entry in cursor:
-            print(entry)
-
-    else:
-        print("Please input a valid year and place! \n")
-
-
-#Given a word (or phrase), returns entries containing the word (or phrase).
-def phraseFind(phrase):
-    if type(phrase)== type("abc"):
-        col.create_index([("description", pymongo.TEXT )]) #text searching https://docs.mongodb.com/manual/text-search/
-        cursor = col.find({
-        "$text":
-        {"$search": phrase}
-        }
+        cursor = col.find(
+            {
+                "event.category2": place
+            }
         )
-        for entry in cursor:
-            print(entry)
+        [print(i["event"]["description"], "\n") for i in cursor]
+    else:
+        print("Please input a valid place.\n")
 
+# Given a word (or phrase), returns entries containing the word (or phrase)
+# and the date
+def find(phrase):
+    if type(phrase) == type("abc"):
+        cursor = col.find(
+            {
+                "event.lang": "en"
+            }
+        )
+        for i in cursor:
+            if phrase in i["event"]["description"]:
+                print("Date:", i["event"]["date"], "\n", i["event"]["description"], "\n")
     else:
         print("Please input another phrase to search! \n")
-'''
-testing
-'''
 
-#yearDesc(-292)
-#dateDesc()
-#placeDesc()
-#yearPlaceDesc(-300,"Seleucid Empire")
-phraseFind("Napoleonic")
+# test
+
+
+# yearAll(100)
+# yearDesc(100)
+# placeDesc("Americas")
+find("valid")

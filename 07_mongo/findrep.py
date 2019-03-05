@@ -13,14 +13,16 @@ def convert(name):
     except:
         print("bad stuff happened")
         return
-    ret = line.replace("{\"event\":", "\n{\"event\":")
+    ret = line.replace(", \"event\":", "}\n{\"event\":")
+    ret = ret[:-1]
+    print(ret)
     # print(line.replace("{\"event\":", "\n{\"event\":"))
-    try:
-        f = open(name, "w")
-        f.write(ret)
-        f.close()
-    except:
-        print("error writing")
+    # try:
+    #     f = open(name, "w")
+    #     f.write(ret)
+    #     f.close()
+    # except:
+    #     print("error writing")
 
 def main():
     convert(sys.argv[1])
