@@ -2,6 +2,19 @@
 
 -----
 
+## 03/07/19
+
+* you can run mongo on 127.0.0.1 by doing:
+```py
+if __name__== "__main__":
+    app.debug = True
+    app.run(host="0.0.0.0")
+```
+
+
+
+-----
+
 ## 03/06/19
 
 **Aim**: Throw a facade on it
