@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 
 import sys
@@ -13,14 +14,20 @@ def convert(name):
     except:
         print("bad stuff happened")
         return
-    ret = line.replace("{\"result\": {\"count\": \"37859\"}", "{\"result\": {\"count\": \"37859\"}}")
-    ret = ret.replace(", \"event\":", "}\n{\"event\":")
+
+    idx = line.find("\"event\"")
+    line = line[idx: len(line)-1]
+    #ret = line.replace("{\"result\": {\"count\": \"37859\"}", "{\"result\": {\"count\": \"37859\"}}")
+    ret = line.replace(", \"event\":", "}\n{\"event\":")
     ret = ret[:-1]
-    # print(ret)
+    res = "{"
+    res += ret
+    res += "}"
+    #print(ret)
     # print(line.replace("{\"event\":", "\n{\"event\":"))
     try:
         f = open(name, "w")
-        f.write(ret)
+        f.write(res)
         f.close()
     except:
         print("error writing")

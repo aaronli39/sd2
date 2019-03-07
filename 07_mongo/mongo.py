@@ -23,26 +23,36 @@ http://www.vizgr.org/historical-events/search.php?format=json&begin_date=-300000
 import pymongo
 import json
 
-#SERVER_ADDR = "69.55.59.139" #Aaron
-SERVER_ADDR = "178.128.156.17" #AK
+SERVER_ADDR = "69.55.59.139" #Aaron
 client = pymongo.MongoClient(SERVER_ADDR)
 db = client.aaronoza
-col = db.history #hw
+col = db.hw
 
-
-#importation mechanism since our file was reformatted
-with open('history.json') as f:
-    lines = f.readlines()
-    for line in lines:
-        data = json.loads(line)
-        #print(line)
-        col.insert(data)
-
+# import function(only need to do this once)
+def imp():
+    if "hw" in db.list_collection_names(): return
+    print("Importing history data, this may take a while(10ish mins)...")
+    #importation mechanism since our file was reformatted
+    with open('history.json') as f:
+        lines = f.readlines()
+        for line in lines:
+            try:
+                data = json.loads(line)
+            #print(line)
+                col.insert(data)
+            except:
+                print("Something unexpected happened.")
+                break
+        print("Import successful.")
 
 # Given a year, return historical entries found given input:
 # an integer year (eg: 900)
 # a string date in yyyy/mm/dd format (eg: 2001/01/17)
 def yearAll(year):
+    if type(year) != type(12) and type(year) != type(""):
+        print("Please enter a valid date.\n")
+        return
+
     cursor = col.find(
         {
             "event.date": str(year)
@@ -51,16 +61,15 @@ def yearAll(year):
     if cursor.count() == 0:
         print("Sorry, this year wasn't found.\n")
         return
-    #[print(i, "\n") for i in cursor]
     lst=[]
+    [print(i, "\n") for i in cursor]
     for i in cursor:
         lst.append(i)
-    print(lst)
     return lst
 
 # Given a specific date, return relevant historical entry
 def yearDesc(date):
-    if type(date) != type(12) or type(date) != type(""):
+    if type(date) != type(12) and type(date) != type(""):
         print("Please enter a valid date.\n")
         return
 
@@ -74,11 +83,10 @@ def yearDesc(date):
         return
     print("\n----- Descriptions found for date:", date, "-----\n")
     lst=[]
+    [print(i["event"]["description"], "\n") for i in cursor]
+    print("----- End of Descriptions found for date:", date, "-----\n")
     for i in cursor:
         lst.append(i["event"]["description"])
-    print(lst)
-    #[print(i["event"]["description"], "\n") for i in cursor]
-    print("----- End of Descriptions found for date:", date, "-----\n")
     return lst # list of relevant entries
 
 # Given a place or topic (category 2) returns relevant historical entry descriptions
@@ -118,8 +126,10 @@ def find(phrase):
     else:
         print("Please input another phrase to search! \n")
 
+imp()
+
 # test
-yearAll(100)
-# yearDesc(100)
+# yearAll("2012/12/31")
+# yearDesc("2012/12/31")
 # placeDesc("Americas")
-find("Alexander")
+# find("T")
