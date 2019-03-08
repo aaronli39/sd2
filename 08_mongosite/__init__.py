@@ -116,17 +116,16 @@ def retHist():
                 print("\n\n", phrases, "\ndates\n", dates, "\n\n")
                 return render_template("history.html", phrases = phrases, descs = dates[1:])
 
-@app.route('/search')
-def getData():
-    type = request.args["type"]
-    data = mongo.getData(request.args["arg"], type)
-    return render_template("result.html", data=data)
+# def getData():
+#     type = request.args["type"]
+#     data = mongo.getData(request.args["arg"], type)
+#     return render_template("result.html", data=data)
 
-@app.route("/launch")
-def launch():
-    addr = request.args["ip"]
-    mongo.launchDB(addr)
-    return redirect(url_for("nobelLanding"))
+# @app.route("/launch")
+# def launch():
+#     addr = request.args["ip"]
+#     mongo.launchDB(addr)
+#     return redirect(url_for("nobelLanding"))
 
 if __name__ == '__main__':
     app.debug = True
