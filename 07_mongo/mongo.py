@@ -25,24 +25,25 @@ import json
 
 SERVER_ADDR = "69.55.59.139" #Aaron
 client = pymongo.MongoClient(SERVER_ADDR)
-db = client.aaronoza
-col = db.hw
+db = client.history
+col = db.files
 
 # import function(only need to do this once)
 def imp():
-    if "hw" in db.list_collection_names(): return
-    print("Importing history data, this may take a while(10ish mins)...")
+    if "files" in db.list_collection_names(): return
+    print("Importing history data...")
     #importation mechanism since our file was reformatted
     with open('history.json') as f:
         lines = f.readlines()
+        temp = []  
         for line in lines:
             try:
                 data = json.loads(line)
-            #print(line)
-                col.insert(data)
+                temp.append(data)
             except:
                 print("Something unexpected happened.")
                 break
+        col.insert_many(temp)
         print("Import successful.")
 
 # Given a year, return historical entries found given input:
