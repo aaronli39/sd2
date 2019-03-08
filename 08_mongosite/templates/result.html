@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Nobel Prize Search</title>
+	</head>
+	<body>
+		<h2> Results </h2>
+		<a href="/">Home</a>
+        {% for entry in data %}
+            <p> Year awarded: {{entry["year"]}}</p>
+			<p> Category: {{entry["category"]}}</p>
+			<h4> Winners </h4>
+			{% for winner in entry["laureates"] %}
+				<p>{{winner["firstname"]}} {{winner["surname"]}}</p>
+			{% endfor %}
+			<hr>
+        {% endfor %}
+	</body>
+</html>

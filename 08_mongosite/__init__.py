@@ -1,4 +1,4 @@
-# Team Team
+# Team Mongo-Lians
 # Joan Chirinos, Aaron Li, Joyce Liao
 
 import os
@@ -7,6 +7,8 @@ from flask import Flask, render_template, redirect, url_for, session, request, f
 import pprint
 
 from util import pokemon as pk
+from util import history as hist
+from util import mongo 
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -19,11 +21,19 @@ def landing():
 def pokemonLanding():
     return render_template('pokemonLanding.html')
 
+@app.route('/history')
+def historyLanding():
+    return render_template('historyLanding.html')
+
+@app.route('/nobel')
+def nobelLanding():
+    return render_template("nobel.html")
+
 @app.route('/getPokemen', methods=["POST"])
 def getMen():
 
     # connect to DB
-    client = pk.connect('206.189.236.112')
+    client = pk.connect('69.55.59.139')
     db = pk.getDatabase(client, 'test')
     collection = pk.getCollection(db, 'pokemon')
 
@@ -78,6 +88,45 @@ def getMen():
         print(pokelist)
         return render_template('pokemonGet.html', hasmon=hasmon, pokemon=pokelist, types=', '.join(types), weaknesses=', '.join(weaknesses), id=id)
 
+@app.route('/hist', methods=["POST"])
+def retHist():
+    # connect
+    SERVER_ADDR = "69.55.59.139"  # Aaron
+    client = hist.connect(SERVER_ADDR)
+    db = client.history
+    col = db.files
+    hist.imp(db, col)
+
+    date = request.form.get("date")
+    phrase = request.form.get("phrase")
+    print("\n\n", date, phrase, "\n\n")
+    if not date and phrase != "":
+        data = hist.find(str(phrase), col)
+        if data != -1:
+            return render_template("history.html", phrases = data, descs = -1)
+    elif date != "" and not phrase:
+        data = hist.yearDesc(str(date), col)
+        if data[0] != -1:
+            return render_template("history.html", phrases = -1, descs = data[1:])
+    else:
+        if type(date) == type("") and type(phrase) == type(""):
+            phrases = hist.find(str(phrase), col)
+            dates = hist.yearDesc(str(date), col)
+            if phrases != -1 and dates[0] != -1:
+                print("\n\n", phrases, "\ndates\n", dates, "\n\n")
+                return render_template("history.html", phrases = phrases, descs = dates[1:])
+
+@app.route('/search')
+def getData():
+    type = request.args["type"]
+    data = mongo.getData(request.args["arg"], type)
+    return render_template("result.html", data=data)
+
+@app.route("/launch")
+def launch():
+    addr = request.args["ip"]
+    mongo.launchDB(addr)
+    return redirect(url_for("nobelLanding"))
 
 if __name__ == '__main__':
     app.debug = True

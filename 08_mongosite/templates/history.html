@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>History results</title>
+    </head>
+
+    <body>
+        <h1>Here are your query results</h1>
+
+        {% if descs == -1 %}
+            <h3>Found phrases:</h3>
+            <ol>
+                {% for i in phrases %}
+                    <ul>i</ul>
+                {% endfor %}
+            </ol>
+        {% elif phrases == -1 %}
+            <h3>Found descriptions</h3>
+            <ol>
+                {% for i in descs %}
+                    <ul>i</ul>
+                {% endfor %}
+            </ol>
+        {% else%}
+            <h3>Found phrases:</h3>
+            {% if phrases|length == 0 %}
+            <p>None were found.</p>
+            {% endif %}
+            <ul>
+                {% for i in phrases %}
+                    <li>{{ i }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Found descriptions</h3>
+            {% if descs|length == 0 %}
+            <p>None were found.</p>
+            {% endif %}
+            <ul>
+                {% for i in descs %}
+                    <li>{{ i }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>

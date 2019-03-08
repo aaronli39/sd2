@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Nobel Prize Search</title>
+	</head>
+	<body>
+		<h2> Nobel Prize Record </h2>
+		<h3> Launch db on new server </h3>
+		IP address
+		<form action="/launch">
+			<input type="text" name="ip" placeholder="Ex: 127.0.0.1" required>
+			<input type="submit" value="Launch">
+		</form>
+		<h3>Search by Year</h3>
+		<form action="/search">
+			<input type="hidden" name="type" value="year">
+			<input type="text" name="arg" placeholder="Ex: 2005" required>
+			<input type="submit" value="search">
+		</form>
+		<h3>Search by Category</h3>
+		<form action="/search">
+			<input type="hidden" name="type" value="category">
+			<input type="text" name="arg" placeholder="Ex: Physics" required>
+			<input type="submit" value="search">
+		</form>
+	</body>
+</html>
