@@ -2,6 +2,41 @@
 
 -----
 
+## 03/12/19
+
+**XML**:
+* extensible markup language
+* meta-language: use it to create other languages
+* defines a set of rules for encoding data in a format which is both *human-readable* and *machine-readable*
+* **not** a formatting language(HTML, GHFMD)
+* allows you to define a file *type* or data *type*
+* stores data, but not really render it
+* framework for creating markup-based grammars
+* uses some syntactic standards of HTML(tags, attributes)
+* emphasizes **organizing** and **representing** data(instead of rendering/displaying it)
+* an XML **workspace** is defined by the tags and attributes associated with a specific XML language
+* forms of XML namespaces(docx, RSS, MathML)
+* **raster** image encoding: PNG, JPEG, GIF, etc
+    * comes from Latin *rastrum* -> "Rake"
+    * **bit by bit** specification of an image
+* **SVG**: scalable vector graphics
+    * vector image format
+    * XML-based
+    * an SVG img and its actions are defined by its XML file
+    * vector graphics are images not represented as a 2d grid of pixels, but rather a **list of drawing commands**
+    * **biggest advantage:** to vector graphics is that they are scalable to any size without *resulting in pixelation*
+    * `<svg>` element is designed to store SVG code
+    * `<xmlns>`: attribute that identifies that namespace for the specific XML language being used
+    * eg:
+```xml
+<svg xmlns="http://www.w3.org/2000/svg">
+    <!-- YOUR SVG CODE HERE -->
+</svg>
+
+```
+
+-----
+
 ## 03/07/19
 
 * you can run mongo on 127.0.0.1 by doing:
