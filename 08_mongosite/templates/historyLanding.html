@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Amazing Historical Facts</title>
+    </head>
+
+    <body>
+        <h1>Historical DB</h1>
+        <p>Some functions to query the history database:</p>
+        <br>
+        <form action="/hist" method="POST">
+            <p><b>1)</b> List of descriptions given a year(integer format or yyyy/mm/dd)</p>
+            Year:
+            <input type="text" name="date" placeholder="eg: 800 or 2001/01/02">
+            <p><b>2)</b> Find historical entries with this phrase: </p>
+            <input type="text" name="phrase" placeholder="any text">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
