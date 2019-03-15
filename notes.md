@@ -1,10 +1,28 @@
 #SOFTDEV NOTES
+-----
 
+## 03/15/19
+
+**Event propagation**:
+* an element intercepts an event
+* browser collects DOM node path of the event from the starting element to the root
+* **capture**: event propagtaes down the path from step 2
+* **bubbling**: event propatates up the path from step 2
+
+* *default* event listener trigger in bubbling phase
+* to trigger during capture phase, add `true` argument as 3rd option to `addEventListener`
+
+**`this`**:
+* has different meanings depending on JS context
+* in a JS obj, `this` refers to the calling obj
+* in an event listener, `this` refers to the currently triggered element
+
+**`.target`**:
+* returns the element that began the event propagation chain
 
 -----
 
 ## 03/13/19
-
 
 -----
 
