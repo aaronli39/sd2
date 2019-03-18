@@ -75,6 +75,7 @@ var draw = (e) => {
     pic.appendChild(c);
 };
 
+// does the teleporting and random speed mod
 var woosh = (e) => {
     window.cancelAnimationFrame(requestID);
     if (pic.children.length == 0) return;
