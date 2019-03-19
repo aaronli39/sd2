@@ -1,0 +1,100 @@
+<!--
+Xiaojie(Aaron) Li
+SoftDev2 pd8
+K12 -- Dabbling in D3
+2019-03-18    
+-->
+
+<!DOCTYPE html>
+<!--D3 demo: hardcoded bars removed, to be generated fr data-->
+<!--
+    Can yield a horizontal bar chart if properly bound to data
+    (steelblue bars, white number overlays)
+    ...but will yield only blank page at first.
+  -->
+<html>
+
+<head>
+    <style>
+        .chart div {
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart"></div>
+
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+</body>
+
+</html>
+
+<!--------------------------------
+    Entering the following commands via console will 
+    incrementally re-create your hardcoded chart...
+   
+    1) Init your data:
+    var data = [4, 8, 15, 16, 23, 42];
+        Predictions: 
+            * will initialize an array of said input
+            * will return undefined since the declaration doesn't return anything
+        Results:
+            * not much notable, you can see the array by calling data again
+
+    2) Select your chart.
+        var chart = d3.select(".chart");
+        Predictions:
+            * will select the chart div and put it as a javascript object so 
+            functions can be called or performed on it
+        Results:
+            * i see that chart is an object with different attributes or data
+            such as _groups and _parents. Accessing _groups gives you the actual
+            chart div as well as some basic information such as length. Once the children
+            divs are recreated it also lists the information of the children divs
+    
+    3) Prepare for data join.
+    var bar = chart.selectAll("div");
+    (this defines selection to which you will join data)
+        Predictions:
+            * not sure, since the chart obj is empty right now but you're selecting the divs
+            of that empty div with no child divs
+        Results:
+            * returns an obj with the same _groups and _parents field. There is a nodelist
+            in _groups though I'm not sure what that does. Just selects the div I guess so
+            you can append data to it in the next step?
+
+    3) Join your data.
+    var barUpdate = bar.data(data);
+        Predictions:
+            * this will actually set the data of the bars to the array that 
+            we instantiated in the first step
+        Results:
+            * sure enough, the data array could be found in barUpdate._enter's array
+            * no idea what _exit is, and why this obj also has _groups and _parent. I'm
+            assuming it has it to keep track of child nodes and parent nodes
+    4) Instantiate new elements by appending to the “enter selection.”
+    var barEnter = barUpdate.enter().append("div");
+        Predictions:
+            * will actually add the divs for the data to live in
+        Results:
+            * a bar appeared equal to the number of elements in the array
+    5) Set width of each bar proportional to its data value.
+    barEnter.style("width", function(d) {
+    return d * 10 + "px"; });
+        Predictions:
+            * this will set the style for each "d" in data to have 10x their
+            value in pixels
+        Results:
+            * prediction was correct!
+    6) Label each bar.
+    barEnter.text(function(d) { return d; });
+        Predictions:
+            * this is simple... sets the text for each div to be the value
+            of the element in the array
+  -------------------------------->

@@ -1,4 +1,27 @@
 #SOFTDEV NOTES
+
+-----
+
+## 03/18/19
+**Aim**: _ocument_riven_ata
+
+**the basics**
+* include http://d3js.org/d3.v5.min.js in a script tag to sse d3 or download the source and link that instead
+* d3 is a data visualization tool
+
+**selectors**
+* a la jquery
+* concisify selection of DOM elements
+* eg, some D3 selector functions:
+    * `d3.select( IDENTIFIER );`: returns first element matching identifier
+    * `d3.selectALL( IDENTIFIER );`: returns an array of all elements matching given identifier
+* why d3? after selectin an element, you can set various attributes: style, text, etc:
+    * `d3.select("body').style("color", "red")`
+* or pass **functions** to set values dynamically:
+    * `d3.selectAll("p").style("font-size", function() { return Math.floor( Math.random() * 15) + "px"});`
+* binding data: you can bind data to elements in d3
+
+
 -----
 
 ## 03/15/19
