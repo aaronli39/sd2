@@ -2,6 +2,14 @@
 
 -----
 
+## 03/19/19
+
+**enter selection**
+* collection of placeholder nodes for each data element for which no corresponding existing DOM element was found
+* the styling works only b/c you have binded dom elements to data
+
+-----
+
 ## 03/18/19
 **Aim**: _ocument_riven_ata
 
