@@ -1,5 +1,21 @@
 #SOFTDEV NOTES
 
+----
+
+## 04/12/19
+
+**Aim**: comprende
+
+
+
+-----
+
+## 04/11/19
+
+* list comprehension    
+    * can have zero or more ifs/fors to be more complex
+* tuples: immutable list
+
 -----
 
 ## 03/19/19
