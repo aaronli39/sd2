@@ -3,6 +3,7 @@
 # K17 -- PPFTLCW
 # 2019-04-14
 
+# 1a
 def first(l):
     counter = 0
     ret = []
@@ -11,10 +12,12 @@ def first(l):
         counter += 2
     return ret
 
+# 1b
 def firstLis(l):
     ret = [str(i * 2) + str(i * 2) for i in range(l)]
     return ret
 
+# 2a
 def second(l):
     counter = 7
     ret = []
@@ -23,10 +26,12 @@ def second(l):
         counter += 10
     return ret
 
+# 2b
 def secondLis(l):
     ret = [7 + (10 * i) for i in range(l)]
     return ret
 
+# 3a
 def third(l):
     ret = [0, 0, 0]
     for i in range(l):
@@ -36,9 +41,11 @@ def third(l):
         ret.append(ret[ind - 1] + 2)
     return ret
 
+# 3b
 def thirdLis(l):
     ret = []
 
+# 4a
 def fourth():
     ret = []
     nums = [2,3,4,5,6,7,8,9]
@@ -51,11 +58,12 @@ def fourth():
                 ret.append(i)
                 break
     return ret
-
+# 4b
 def fourthLis():
     ret = [i for i in range(100) for x in [2, 3, 4, 5, 6, 7, 8, 9] if i % x == 0 and i not in [0, 2, 3, 5, 7]]
     return list(set(ret)) 
 
+# 5a
 def fifth():
     ret, state = [], True
     for i in range(2, 101):
@@ -67,20 +75,24 @@ def fifth():
         if state: ret.append(i)
     return ret
 
+# 5b
 def fifthLis():
     ret = [i for i in range(2, 101) if True not in [True if i % x == 0 else False for x in range(2, i)]]
     return ret
 
+# 6a
 def sixth(l):
     ret = [1]
     for i in range (2, l + 1):
         if l % i == 0: ret.append(i)
     return ret
 
+# 6b
 def sixthLis(l):
     ret = [i for i in range(1, l + 1) if l % i == 0]
     return ret
 
+# 7a
 def seventh(l):
     ret = []
     for i in range(len(l[0])):
@@ -90,6 +102,7 @@ def seventh(l):
         ret.append(temp)
     return ret
 
+# 7b
 def seventhLis(l):
     ret = [[l[x][i] for x in range(len(l))] for i in range(len(l[0]))]
     return ret
