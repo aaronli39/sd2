@@ -2,11 +2,20 @@
 
 ----
 
+
+-----
+
+## 04/15/19
+
+**Aim**: WHat else can you do via list comprehensions?
+
+* quicksort is 
+
+-----
+
 ## 04/12/19
 
 **Aim**: comprende
-
-
 
 -----
 
