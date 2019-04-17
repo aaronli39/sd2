@@ -2,6 +2,20 @@
 
 ----
 
+-----
+
+## 04/17/19
+
+**Aim** Reductio ad absurbdum
+
+* Math.sqrt in python is costly since it's not super accurate and also it jumps back in forth to try to make an approximation
+* reduce: a function tat returns something to a single value, performs rolling calculation on successive value pairs
+* reduce is from `functools`
+* lambda in python:
+    * must return a value
+    * should remind you of scheme
+    * conditionals must be in form of a python ternary operator
+    * `exprA if conditions else exprB
 
 -----
 
