@@ -2,6 +2,38 @@
 
 ----
 
+## 04/29/19
+
+**Aim**: JS and the Holy Trinity of Data Processing
+
+* reduce in JS
+
+```js
+x = [1, 2, 3, 4]
+// this will sum elements of x
+x.reduce(function(a, b), {return a + b});
+```
+
+* filter, map, and reduce (holy trinity of data processing)
+
+```js
+// mapping
+var x = [1, 2, 3, 4]
+var newX = x.map(function(n) {
+    return n * 2;
+});
+
+console.log("doubled:", newX);
+
+// filter
+// filters out values you don't want
+var x = [1, 2, 3, 4]
+var newX = x.filter(function(n) {
+    return (n % 2 == 0)
+});
+
+```
+
 -----
 
 ## 04/17/19
