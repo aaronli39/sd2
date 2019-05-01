@@ -1,6 +1,12 @@
 #SOFTDEV NOTES
 
-----
+## 05/01/19
+
+**Aim**: Achieve closure
+
+* memoization: process of storing previously calculated results as to avoid recalculation
+
+-----
 
 ## 04/30/19
 
