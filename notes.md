@@ -2,6 +2,24 @@
 
 ----
 
+## 04/30/19
+
+* in python, a fxn is a first class citizen, meaning:
+    * it can be passed as a variable etc
+* a **closure** remembers the context in which it was created, even if you delete the creator function
+```python
+del outer
+outer(42)
+```
+
+**creating a closure**:
+* define nested function
+* nested function must refer to var defined in enclosing fxn(optional)
+* return nested function
+
+
+-----
+
 ## 04/29/19
 
 **Aim**: JS and the Holy Trinity of Data Processing
