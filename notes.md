@@ -1,5 +1,38 @@
 #SOFTDEV NOTES
 
+## 05/02/19
+
+**Aim**: Memoization++ & Life Beyond
+
+**Tech Resume**:
+* action words
+* less is more
+* only list tech/lang if you know it
+* do not leave out tech/lang you know
+* appropriate email
+* PROOFREAD
+* goal of resume:
+* need not fill page
+* name and contact info clear at top
+
+***args**:
+* use this when you don't know how many arguments there will be
+* when function is called, then you can access it as a list
+
+```python
+def mem(f):
+    cache = {}
+    def memoize(*args):
+        if args in cache:
+            return cache[args]
+        result = f(*args)
+        cache[args] = result
+        return result
+    return memoize
+```
+
+-----
+
 ## 05/01/19
 
 **Aim**: Achieve closure
